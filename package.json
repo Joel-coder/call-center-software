@@ -9,8 +9,8 @@
   "private": false,
   "scripts": {
     "start": "webpack-dev-server --mode development --open",
-    "build": "webpack --mode development",
-    "heroku-prebuild": "yarn install --production=false"
+    "build": "webpack --mode production",
+    "heroku-prebuild": "yarn install --dev"
 
   },
   "dependencies": {
