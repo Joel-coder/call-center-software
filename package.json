@@ -10,7 +10,7 @@
   "scripts": {
     "start": "webpack --mode production",
     "build": "webpack --mode production",
-    "heroku-prebuild": "yarn install --dev"
+    "heroku-prebuild": "yarn add --dev"
 
   },
   "dependencies": {
