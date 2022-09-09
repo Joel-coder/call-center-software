@@ -9,13 +9,13 @@
   "private": false,
   "scripts": {
     "start": "webpack-dev-server --mode development --open",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "heroku-prebuild": "yarn add --dev"
   },
   "dependencies": {
     "moment": "^2.29.4",
     "react": "^16.14.0",
-    "react-dom": "^16.14.0",
-    "webpack-dev-server": "3.1.*"
+    "react-dom": "^16.14.0"
   },
   "devDependencies": {
     "babel-core": "6.26.*",
