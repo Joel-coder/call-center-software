@@ -1,0 +1,154 @@
+html, body, h1, h2, h3, ul, li {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+}
+
+body {
+  background: #233142;
+  font-family: helvetica, arial, sans-serif;
+  font-size: 13px;
+  color: #333333;
+  line-height: 1;
+}
+
+.activity-container {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px darkslategray;
+}
+.activity-container:active {
+  box-shadow: 0 0 2px darkslategray;
+  transform: translateY(2px);
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.bi-telephone-inbound-fill 
+{
+margin: 5px;
+}
+.phone-number {
+  color: #333333;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 800;
+  margin: 5px;
+}
+
+.call-detail {
+  font-family: inherit;
+  font-size: 13px;
+  margin: 5px;
+
+}
+
+.phone-container {
+  margin: 15px;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 10px;
+  border-color: #f4f4f3;
+  transition: background-color 0.5s ease-out 100ms
+}
+.phone-container:hover {
+  background-color: #f4f4f3;
+}
+.divider {
+  display: flex;
+}
+
+.divider:before 
+{
+  content: "";
+  flex: 1;
+}
+.divider:after {
+  content: "";
+  flex: 1;
+}
+
+.one-line:before{
+  background: black;
+  background: linear-gradient(to right, rgba(15, 11, 11, 0), rgb(230, 223, 223));
+  
+}
+  
+.one-line:after {
+  background: black;
+  background: linear-gradient(to left, rgba(15, 11, 11, 0), rgb(230, 223, 223));
+}
+
+.line {
+  align-items: center;
+  margin-top: 5px;
+  
+}
+.line:before
+{
+  height: 1px;
+  margin: 0 1em;
+}
+.line:after {
+  height: 1px;
+  margin: 0 1em;
+}
+
+.transform-uppercase {
+  text-transform: uppercase;
+}
+
+
+.constraint {
+  width:600px;
+  border:1px;
+}
+button {
+  outline:none;
+  background: none;
+  border:0;
+  margin:.5em;
+}
+.round-button {
+  width:100%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+}
+.round-button-circle {
+  
+
+  width: 80px;
+  height:0;
+  padding-bottom: 80px;
+    border-radius: 80px;
+  border:5px solid #cfdcec;
+    overflow:hidden;
+    
+    background: #48c222; 
+    box-shadow: 0 0 3px gray;
+}
+.round-button-circle:hover {
+  background:#48c222;
+}
+.round-button a, .round-button span {
+  
+  width:1px;
+  
+  line-height:1em;
+  margin-top:-0.5em;
+    
+  text-align:center;
+  color:#e2eaf3;
+    font-family:Verdana;
+    font-size:5px;
+    font-weight:bold;
+    text-decoration:none;
+}
