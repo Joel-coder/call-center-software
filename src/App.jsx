@@ -17,6 +17,7 @@ const App = () => {
           data.map((data) => <PhoneContainer key={data.id} data={data} />)}
       </div>
       <RountButton />
+      <footer className="bottom-bar">klk</footer>
     </div>
   );
 };

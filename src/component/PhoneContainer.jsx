@@ -10,7 +10,7 @@ const PhoneContainer = ({ data }) => {
       <div class="divider line one-line">{date}</div>
 
       <div className="phone-container">
-        <div className="activity-container">
+        <div className="activity-container transform-shadow">
           <div className="flex-row">
             <span>
               <svg
