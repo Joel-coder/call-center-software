@@ -1,0 +1,52 @@
+.bottom-bar {
+    width: 100%;
+    display: flex;
+    justify-content:left;
+    padding: 10px 0px 10px 0px;
+   }
+
+   a span{
+    font-family: helvetica, arial, sans-serif;
+    font-weight: 600;
+    color: red;
+  
+  }
+  .bi-archive {
+    cursor: pointer;
+    color: #233142;
+  }
+  .round-button {
+    display: flex;
+    justify-content: center;
+  }
+  .round-button-circle {
+    
+  
+    width: 50px;
+    height:0;
+      padding-bottom: 50px;
+      border-radius: 50px;
+      border:5px solid #cfdcec;
+      overflow:hidden;
+      background: #48c222; 
+      box-shadow: 0 0 3px gray;
+      cursor: pointer;
+  
+  }
+  .round-button-circle:hover {
+    background:#6abe51;
+  }
+  .round-button a, .round-button span {
+    width:1px;
+    line-height:1em;
+    margin-top:-0.5em;
+    text-align:center;
+    color:#e2eaf3;
+    font-family:Verdana;
+    font-size:5px;
+    font-weight:bold;
+    text-decoration:none;
+  }
+  .bi-grid-3x3-gap-fill {
+    margin-top: 12px;
+  }

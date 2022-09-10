@@ -2,8 +2,8 @@ import React from "react";
 
 const RountButton = () => {
   return (
-    <button class="round-button ">
-      <div class="round-button-circle transform-shadow">
+    <button className="round-button ">
+      <div className="round-button-circle transform-shadow">
         <span>
           <svg
             xmlns="http://www.w3.org/2000/svg"

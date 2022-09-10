@@ -9,7 +9,7 @@ const PhoneContainer = ({ data }) => {
     <div>
       {!data.is_archived && (
         <div>
-          <div class="divider line one-line">{date}</div>
+          <div className="divider line one-line">{date}</div>
           <div className="phone-container">
             <div className="activity-container transform-shadow">
               <div className="flex-row">
