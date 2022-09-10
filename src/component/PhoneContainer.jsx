@@ -1,5 +1,6 @@
 import React from "react";
 import moment from "moment/moment";
+import Dropdown from "react-bootstrap/Dropdown";
 const PhoneContainer = ({ data }) => {
   let dt = new Date(data.created_at);
   let hour = moment(dt).format("hh a");
@@ -33,11 +34,38 @@ const PhoneContainer = ({ data }) => {
                   <div className="call-detail">{`Tried to call on ${data.to}`}</div>
                 </div>
               </div>
+              <Dropdown>
+                <Dropdown.Toggle
+                  id="dropdown-basic"
+                  style={{
+                    color: "white",
+                    backgroundColor: "transparent",
+                    borderColor: "transparent",
+                    padding: "2px",
+                  }}
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-three-dots-vertical"
+                    viewBox="0 0 16 16"
+                  >
+                    <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                  </svg>
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Item href="#/action-1">Archive</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
               <span className="general-font-family transform-uppercase">{`${hour}`}</span>
             </div>
           </div>
         </div>
       )}
+
+      <div className="side-form-three-dots me-1"></div>
     </div>
   );
 };

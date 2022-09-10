@@ -120,5 +120,12 @@ button {
   outline:none;
   background: none;
   border:0;
-  margin:.5em;
+  cursor: none;
 }
+.bi-three-dots-vertical {
+  cursor: pointer;
+  margin: 10px;
+color: black;
+}
+
+
