@@ -1,11 +1,36 @@
 import React from "react";
 import moment from "moment/moment";
 import Dropdown from "react-bootstrap/Dropdown";
+import useApi from "./useApi.js";
+import { useEffect, useState } from "react";
 const PhoneContainer = ({ data }) => {
+  const archived = { is_archived: true };
+  const [id, setID] = useState(null);
   let dt = new Date(data.created_at);
   let hour = moment(dt).format("hh a");
   let date = moment(dt).format("MMMM, D YYYY");
-  const count = 0;
+  const setPostID = () => {
+    fetch(`https://aircall-job.herokuapp.com/activities/${id}`, {
+      method: "POST", // or 'PUT'
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(archived),
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((json) => {
+        console.log(json);
+      });
+  };
+
+  useEffect(() => {
+    if (id != null) {
+      setPostID();
+    }
+  }, [id]);
+
   return (
     <div>
       {!data.is_archived && (
@@ -49,14 +74,16 @@ const PhoneContainer = ({ data }) => {
                     width="16"
                     height="16"
                     fill="currentColor"
-                    class="bi bi-three-dots-vertical"
+                    className="bi bi-three-dots-vertical"
                     viewBox="0 0 16 16"
                   >
                     <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
                   </svg>
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
-                  <Dropdown.Item href="#/action-1">Archive</Dropdown.Item>
+                  <Dropdown.Item onClick={() => setID(data.id)}>
+                    Archive
+                  </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
               <span className="general-font-family transform-uppercase">{`${hour}`}</span>

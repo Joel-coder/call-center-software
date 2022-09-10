@@ -7,28 +7,10 @@ import usePostApi from "./component/usePostApi.js";
 import RountButton from "./component/Button.jsx";
 import { useEffect, useState } from "react";
 const App = () => {
-  const archived = { is_archived: true };
   const [dataBoolean, setDataBoolean] = useState(null);
   const { loading, data } = useApi(
     "https://aircall-job.herokuapp.com/activities"
   );
-  const setPostID = () => {
-    data.map((data) => {
-      fetch(`https://aircall-job.herokuapp.com/activities/${data.id}`, {
-        method: "POST", // or 'PUT'
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(archived),
-      })
-        .then((response) => {
-          return response.json();
-        })
-        .then((json) => {
-          console.log(json);
-        });
-    });
-  };
 
   return (
     <div className="container">
@@ -38,7 +20,7 @@ const App = () => {
           data.map((data) => <PhoneContainer key={data.id} data={data} />)}
       </div>
       <footer className="bottom-bar">
-        <span onClick={() => setPostID()}>
+        <span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="40"
