@@ -32,6 +32,18 @@ const App = () => {
         });
     }
   }, [id]);
+
+  const reset = () => {
+    fetch("https://aircall-job.herokuapp.com/reset")
+      .then((response) => {
+        return response.json();
+      })
+      .then((json) => {
+        console.log(json);
+        setLoading(false);
+        setData(json);
+      });
+  };
   return (
     <div className="container">
       <Header />
@@ -42,7 +54,7 @@ const App = () => {
           ))}
       </div>
       <footer className="bottom-bar">
-        <span className="">
+        <span onClick={reset}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="30"
