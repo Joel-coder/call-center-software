@@ -3,33 +3,10 @@ import moment from "moment/moment";
 import Dropdown from "react-bootstrap/Dropdown";
 import useApi from "./useApi.js";
 import { useEffect, useState } from "react";
-const PhoneContainer = ({ data }) => {
-  const archived = { is_archived: true };
-  const [id, setID] = useState(null);
+const PhoneContainer = ({ data, setID }) => {
   let dt = new Date(data.created_at);
   let hour = moment(dt).format("hh a");
   let date = moment(dt).format("MMMM, D YYYY");
-  const setPostID = () => {
-    fetch(`https://aircall-job.herokuapp.com/activities/${id}`, {
-      method: "POST", // or 'PUT'
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(archived),
-    })
-      .then((response) => {
-        return response.json();
-      })
-      .then((json) => {
-        console.log(json);
-      });
-  };
-
-  useEffect(() => {
-    if (id != null) {
-      setPostID();
-    }
-  }, [id]);
 
   return (
     <div>

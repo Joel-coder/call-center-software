@@ -5,19 +5,41 @@ import PhoneContainer from "./component/PhoneContainer.jsx";
 import useApi from "./component/useApi.js";
 import usePostApi from "./component/usePostApi.js";
 import RountButton from "./component/Button.jsx";
+
 import { useEffect, useState } from "react";
+
 const App = () => {
-  const [dataBoolean, setDataBoolean] = useState(null);
+  const [id, setID] = useState(null);
+  const archived = { is_archived: true };
   const { loading, data } = useApi(
     "https://aircall-job.herokuapp.com/activities"
   );
 
+  useEffect(() => {
+    if (id != null) {
+      fetch(`https://aircall-job.herokuapp.com/activities/${id}`, {
+        method: "POST", // or 'PUT'
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(archived),
+      })
+        .then((response) => {
+          return response.json();
+        })
+        .then((json) => {
+          console.log(json);
+        });
+    }
+  }, [id]);
   return (
     <div className="container">
       <Header />
       <div className="test">
         {data &&
-          data.map((data) => <PhoneContainer key={data.id} data={data} />)}
+          data.map((data) => (
+            <PhoneContainer key={data.id} data={data} setID={setID} />
+          ))}
       </div>
       <footer className="bottom-bar">
         <span>
