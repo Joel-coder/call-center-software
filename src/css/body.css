@@ -123,8 +123,13 @@ button {
   cursor: none;
 }
 .bi-three-dots-vertical {
-  cursor: pointer;
-color: black;
+
 }
 
 
+.bi-x-diamond {
+  cursor: pointer;
+color: black;
+width: 100%;
+margin: auto;
+}
