@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 
 const usePostApi = (id) => {
-  const [dataPostResponse, setDataPostResponse] = useState(null);
   const data = { is_archived: true };
 
   fetch(`https://aircall-job.herokuapp.com/activities/${id}`, {
@@ -16,10 +15,7 @@ const usePostApi = (id) => {
     })
     .then((json) => {
       console.log(json);
-      setDataPostResponse(json);
     });
-
-  return { dataPostResponse };
 };
 
 export default usePostApi;
