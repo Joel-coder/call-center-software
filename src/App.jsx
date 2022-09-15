@@ -12,8 +12,7 @@ const App = () => {
   const [id, setID] = useState(null);
   const [cellphone, setCellPhone] = useState(null);
   const { loading, data } = useApi(
-    "https://aircall-job.herokuapp.com/activities",
-    cellphone
+    "https://aircall-job.herokuapp.com/activities"
   );
 
   useEffect(() => {
@@ -40,7 +39,11 @@ const App = () => {
             ))}
       </div>
       <footer className="bottom-bar">
-        <span onClick={reset}>
+        <span
+          onClick={() => {
+            reset();
+          }}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="30"

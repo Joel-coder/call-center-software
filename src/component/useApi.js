@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const useApi = (url, cellphone = false) => {
+const useApi = (url) => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState(null);
 
@@ -17,7 +17,7 @@ const useApi = (url, cellphone = false) => {
 
   useEffect(() => {
     fetchApi();
-  }, [cellphone]);
+  }, []);
 
   return { loading, data };
 };
