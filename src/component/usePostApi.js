@@ -13,9 +13,7 @@ const usePostApi = (id) => {
     .then((response) => {
       return response.json();
     })
-    .then((json) => {
-      console.log(json);
-    });
+    .then((json) => {});
 };
 
 export default usePostApi;

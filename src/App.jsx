@@ -10,10 +10,12 @@ import { useEffect, useState } from "react";
 
 const App = () => {
   const [id, setID] = useState(null);
+  const [cellphone, setCellPhone] = useState(null);
   const { loading, data } = useApi(
-    "https://aircall-job.herokuapp.com/activities"
+    "https://aircall-job.herokuapp.com/activities",
+    cellphone
   );
-  let x = data;
+
   useEffect(() => {
     if (id != null) {
       usePostApi(`${id}`);
@@ -21,6 +23,7 @@ const App = () => {
   }, [id]);
 
   const reset = () => {
+    cellphone ? setCellPhone(false) : setCellPhone(true);
     useGetResetApi("https://aircall-job.herokuapp.com/reset");
   };
   return (
@@ -29,8 +32,8 @@ const App = () => {
       <div className="test">
         {data &&
           data
-            .filter((employee) => {
-              return employee.id !== id;
+            .filter((phone) => {
+              return phone.id !== id;
             })
             .map((data) => (
               <PhoneContainer key={data.id} data={data} setID={setID} />
