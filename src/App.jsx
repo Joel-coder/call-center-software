@@ -10,10 +10,7 @@ import { useEffect, useState } from "react";
 
 const App = () => {
   const [id, setID] = useState(null);
-  const [cellphone, setCellPhone] = useState(null);
-  const { loading, data } = useApi(
-    "https://aircall-job.herokuapp.com/activities"
-  );
+  let data = useApi("https://aircall-job.herokuapp.com/activities");
 
   useEffect(() => {
     if (id != null) {
@@ -22,7 +19,6 @@ const App = () => {
   }, [id]);
 
   const reset = () => {
-    cellphone ? setCellPhone(false) : setCellPhone(true);
     useGetResetApi("https://aircall-job.herokuapp.com/reset");
   };
   return (
@@ -30,20 +26,12 @@ const App = () => {
       <Header />
       <div className="test">
         {data &&
-          data
-            .filter((phone) => {
-              return phone.id !== id;
-            })
-            .map((data) => (
-              <PhoneContainer key={data.id} data={data} setID={setID} />
-            ))}
+          data.map((data) => (
+            <PhoneContainer key={data.id} data={data} setID={setID} />
+          ))}
       </div>
       <footer className="bottom-bar">
-        <span
-          onClick={() => {
-            reset();
-          }}
-        >
+        <span onClick={reset}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="30"
