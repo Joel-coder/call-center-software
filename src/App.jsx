@@ -10,15 +10,38 @@ import { useEffect, useState } from "react";
 
 const App = () => {
   const [id, setID] = useState(null);
-  let data = useApi("https://aircall-job.herokuapp.com/activities");
+  const [cellphone, setCellPhone] = useState(null);
+  const [data, setData] = useState([]);
+
+  const fetchApi = () => {
+    fetch("https://aircall-job.herokuapp.com/activities")
+      .then((response) => {
+        return response.json();
+      })
+      .then((json) => {
+        console.log(json);
+        setData(json);
+      });
+  };
 
   useEffect(() => {
+    fetchApi();
+  }, [cellphone]);
+
+  useEffect(() => {
+    remove();
     if (id != null) {
       usePostApi(`${id}`);
     }
   }, [id]);
-
+  const remove = () => {
+    const x = data.filter((phone) => {
+      return phone.id !== id;
+    });
+    setData(x);
+  };
   const reset = () => {
+    cellphone ? setCellPhone(false) : setCellPhone(true);
     useGetResetApi("https://aircall-job.herokuapp.com/reset");
   };
   return (
