@@ -4,7 +4,7 @@ const useGetResetApi = (url) => {
       return response.json();
     })
     .then((json) => {
-      console.log(json);
+  
     });
 };
 

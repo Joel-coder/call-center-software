@@ -5,27 +5,37 @@ import PhoneContainer from "./component/PhoneContainer.jsx";
 import useApi from "./component/useApi.js";
 import usePostApi from "./component/usePostApi.js";
 import useGetResetApi from "./component/useGetResetApi.js";
-
+import "regenerator-runtime/runtime";
 import { useEffect, useState } from "react";
 
 const App = () => {
   const [id, setID] = useState(null);
   const [cellphone, setCellPhone] = useState(null);
   const [data, setData] = useState([]);
+  const controller = new AbortController();
+  const signal = controller.signal;
 
   const fetchApi = () => {
-    fetch("https://aircall-job.herokuapp.com/activities")
+    fetch("https://aircall-job.herokuapp.com/activities", {
+      signal: signal,
+    })
       .then((response) => {
         return response.json();
       })
       .then((json) => {
-        console.log(json);
         setData(json);
+        console.log(json);
+      })
+      .catch((error) => {
+        console.log(error);
       });
   };
 
   useEffect(() => {
     fetchApi();
+    return () => {
+      controller.abort();
+    };
   }, [cellphone]);
 
   useEffect(() => {
@@ -34,12 +44,14 @@ const App = () => {
       usePostApi(`${id}`);
     }
   }, [id]);
+
   const remove = () => {
     const x = data.filter((phone) => {
       return phone.id !== id;
     });
     setData(x);
   };
+
   const reset = () => {
     cellphone ? setCellPhone(false) : setCellPhone(true);
     useGetResetApi("https://aircall-job.herokuapp.com/reset");
